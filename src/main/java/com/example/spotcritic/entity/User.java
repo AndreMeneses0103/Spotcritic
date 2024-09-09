@@ -47,8 +47,12 @@ public class User {
     private String email;
 
     @NotNull
-    @Column(name = "usr_reg_data")
-    private LocalDateTime regdata;
+    @Column(name = "usr_country")
+    private Country country;
+
+    @NotNull
+    @Column(name = "usr_data")
+    private LocalDateTime data;
 
     @Column(name = "usr_avatar")
     private String avatar;
