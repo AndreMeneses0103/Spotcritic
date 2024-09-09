@@ -1,7 +1,6 @@
 package com.example.spotcritic.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -10,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Set;
 
 @Entity
 @Data
@@ -28,12 +28,17 @@ public class Song {
     private String title;
 
     @NotNull
-    @Column(name = "art_id")
-    private Long artistId;
+    @ManyToMany
+    @JoinTable(
+        name = "tb_song_artist",
+        joinColumns = @JoinColumn(name = "sng_id"),
+        inverseJoinColumns = @JoinColumn(name = "art_id")
+    )
+    private Set<Artist> artists;
 
-    @NotNull
-    @Column(name = "alb_id")
-    private Long albumId;
+    @ManyToOne
+    @JoinColumn(name = "alb_id")
+    private Album albumId;
 
     @NotNull
     @Column(name = "sng_date")

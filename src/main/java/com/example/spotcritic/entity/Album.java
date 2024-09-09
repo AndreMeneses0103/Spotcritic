@@ -25,9 +25,9 @@ public class Album {
     @Column(name = "alb_title")
     private String title;
 
-    @NotNull
-    @Column(name = "art_id")
-    private Long artistId;
+    @ManyToOne
+    @JoinColumn(name = "art_id", nullable = false)
+    private Artist artist;
 
     @NotNull
     @Column(name = "sng_date")

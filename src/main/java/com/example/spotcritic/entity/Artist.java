@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -28,4 +30,7 @@ public class Artist {
     @NotNull
     @Column(name = "art_bio")
     private String bio;
+
+    @OneToMany(mappedBy = "artist")
+    private Set<Album> albums;
 }
