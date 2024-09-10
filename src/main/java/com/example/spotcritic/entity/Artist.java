@@ -12,7 +12,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "tb_artist")
+@Table(name = "tb_artist", schema = "spotcritic")
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

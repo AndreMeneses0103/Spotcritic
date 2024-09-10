@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tb_album")
+@Table(name = "tb_album", schema = "spotcritic")
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

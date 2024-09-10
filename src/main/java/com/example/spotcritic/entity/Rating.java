@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_rating")
+@Table(name = "tb_rating", schema = "spotcritic")
 public class Rating {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

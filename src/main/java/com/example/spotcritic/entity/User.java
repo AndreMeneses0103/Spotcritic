@@ -1,5 +1,6 @@
 package com.example.spotcritic.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tb_user")
+@Table(name = "tb_user", schema = "spotcritic")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

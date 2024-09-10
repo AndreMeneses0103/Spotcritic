@@ -15,7 +15,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tb_song")
+@Table(name = "tb_song", schema = "spotcritic")
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
