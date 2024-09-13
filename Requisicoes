@@ -1,0 +1,62 @@
+Requisicoes para Spotcritic:
+
+Usuarios:
+- Usuario por Id
+- Usuario por Nickname
+- Novo Usuario
+- Deletar Usarios
+- Alterar Usuarios
+- Login
+- Recuperar senha
+
+Musicas:
+- Musica por Id
+- Musica por Nome
+- Musica por Artista
+- Musica por album
+- Adicionar Musica
+- Deletar Musica
+- Alterar Musica
+- Listar musicas
+- Musica por Data
+- Musica por Genero
+- Musica por popularidade
+
+Notas:
+- Nota por Id
+- Nota por Musica
+- Nota por Album (media das musicas)
+- Adicionar Nota
+- Remover Nota
+- Atualizar Nota
+- Listar Notas
+- Media de notas
+- Ranking de notas
+
+
+Albums:
+- Album por Id
+- Album por Nome
+- Album por Artista
+- Adicionar Album
+- Remover Album
+- Alterar Album
+- Listar Albums
+- Album por Data
+- Album por Popularidade
+
+
+Artistas:
+- Artista por Id
+- Artista por Nome
+- Artista por Album
+- Adicionar Album
+- Remover Album
+- Alterar Artistas
+- Listar Artistas
+- Artista por popularidade
+- Artista por Genero
+
+A mais:
+- Amigos
+- Sugestoes

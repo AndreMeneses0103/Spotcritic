@@ -1,6 +1,5 @@
 package com.example.spotcritic.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -10,13 +9,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tb_user", schema = "spotcritic")
-public class User {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "usr_id")
@@ -41,6 +41,12 @@ public class User {
     @Size(min = 6)
     @Column(name = "usr_password")
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authorization",
+    joinColumns = {@JoinColumn(name = "usr_id")},
+    inverseJoinColumns = { @JoinColumn(name = "aut_id")})
+    private Set<Authorization> authorizations;
 
     @NotNull
     @Email

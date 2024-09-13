@@ -1,42 +1,48 @@
 package com.example.spotcritic.service;
 
-import com.example.spotcritic.entity.User;
+import com.example.spotcritic.entity.Users;
 import com.example.spotcritic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
     private UserRepository userRep;
 
-    public User newUser(User user){
-        if (user == null) {
+    public Users newUser(Users users){
+        if (users == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User invalid!");
         }
 
-        if (user.getFirstname() == null || user.getFirstname().isBlank()) {
+        if (users.getFirstname() == null || users.getFirstname().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User First name invalid!");
         }
 
-        if (user.getLastname() == null || user.getLastname().isBlank()) {
+        if (users.getLastname() == null || users.getLastname().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User Last name invalid!");
         }
 
-        if (user.getEmail() == null || user.getEmail().isBlank()) {
+        if (users.getEmail() == null || users.getEmail().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User email invalid!");
         }
 
-        if (user.getPassword() == null || user.getPassword().isBlank()) {
+        if (users.getPassword() == null || users.getPassword().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User password invalid!");
         }
 
-        if (user.getNickname() == null || user.getNickname().isBlank()) {
+        if (users.getNickname() == null || users.getNickname().isBlank()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "User nickname invalid!");
         }
 
-        return userRep.save(user);
+        return userRep.save(users);
+    }
+
+    public Optional<Users> getUserById(Long id){
+        return userRep.findById(id);
     }
 }

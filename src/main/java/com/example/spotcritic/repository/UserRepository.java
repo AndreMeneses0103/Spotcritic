@@ -1,7 +1,10 @@
 package com.example.spotcritic.repository;
 
-import com.example.spotcritic.entity.User;
+import com.example.spotcritic.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<Users, Long> {
+    public Optional<Users> getUserByNickname(String nickname);
 }
