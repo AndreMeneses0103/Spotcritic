@@ -45,4 +45,8 @@ public class UserService {
     public Optional<Users> getUserById(Long id){
         return userRep.findById(id);
     }
+
+    public Optional<Users> getUserByNickname(String nick){
+        return userRep.findUsersByNickname(nick);
+    }
 }

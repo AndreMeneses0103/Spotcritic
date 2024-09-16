@@ -22,7 +22,12 @@ public class UserController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Optional<Users>> getUserByNickname(@PathVariable("id") Long id){
+    public ResponseEntity<Optional<Users>> getUserById(@PathVariable("id") Long id){
         return ResponseEntity.status((HttpStatus.OK)).body(userServ.getUserById(id));
+    }
+
+    @GetMapping(path = "/nickname")
+    public ResponseEntity<Optional<Users>> getUserByNickname(@RequestParam("name") String name){
+        return ResponseEntity.status((HttpStatus.OK)).body(userServ.getUserByNickname(name));
     }
 }
