@@ -49,4 +49,12 @@ public class UserService {
     public Optional<Users> getUserByNickname(String nick){
         return userRep.findUsersByNickname(nick);
     }
+
+    public boolean deleteUserById(Long id){
+        if(getUserById(id).isPresent()){
+            userRep.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }
