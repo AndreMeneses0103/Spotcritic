@@ -1,10 +1,10 @@
 Requisicoes para Spotcritic:
 
 Usuarios:
-- Usuario por Id
-- Usuario por Nickname
-- Novo Usuario
-- Deletar Usarios
+X Usuario por Id
+X Usuario por Nickname
+X Novo Usuario
+X Deletar Usarios
 - Alterar Usuarios
 - Login
 - Recuperar senha

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -30,6 +31,11 @@ public class UserController {
     @GetMapping(path = "/nickname")
     public ResponseEntity<Optional<Users>> getUserByNickname(@RequestParam("name") String name){
         return ResponseEntity.status((HttpStatus.OK)).body(userServ.getUserByNickname(name));
+    }
+
+    @GetMapping(path = "/allusers")
+    public ResponseEntity<List<Users>> getAllUsers(){
+        return ResponseEntity.status((HttpStatus.OK)).body(userServ.getAllUsers());
     }
 
     @DeleteMapping(path = "/{id}")
