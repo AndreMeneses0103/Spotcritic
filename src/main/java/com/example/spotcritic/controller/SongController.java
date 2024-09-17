@@ -1,10 +1,13 @@
 package com.example.spotcritic.controller;
 
+import com.example.spotcritic.entity.Song;
 import com.example.spotcritic.service.SongService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/song")
@@ -13,5 +16,8 @@ public class SongController {
     @Autowired
     private SongService songServ;
 
-
+    @GetMapping
+    public ResponseEntity<Optional<Song>> getSongByTitle(@RequestParam("title") String title){
+        return ResponseEntity.status((HttpStatus.OK)).body(songServ.findSongByTitle(title));
+    }
 }
