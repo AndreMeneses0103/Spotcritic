@@ -3,6 +3,7 @@ package com.example.spotcritic.service;
 import com.example.spotcritic.entity.Users;
 import com.example.spotcritic.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserRepository userRep;
+
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
     public Users newUser(Users users){
         if (users == null) {
@@ -44,7 +48,15 @@ public class UserService {
     }
 
     public Optional<Users> getUserById(Long id){
-        return userRep.findById(id);
+        Users cacheUsers = (Users) redisTemplate.opsForHash().get("users", id.toString());
+
+        if(cacheUsers != null){
+            return Optional.of(cacheUsers);
+        }
+
+        Optional<Users> users = userRep.findById(id);
+        users.ifPresent(users1 -> redisTemplate.opsForHash().put("users", users1.toString(), id));
+        return users;
     }
 
     public Optional<Users> getUserByNickname(String nick){
